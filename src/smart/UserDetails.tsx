@@ -8,15 +8,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { IRootState } from "../store";
 import { txActions } from "../store/slices/txSlice";
 import SmartTxModal from "./TxModal";
+import { useNavigate } from "react-router-dom";
 
 const SmartUserDetails = () => {
   const { account, provider, chainId } = useWeb3React();
+  const navigate = useNavigate();
   const dispatch = useDispatch<any>();
   const userState = useSelector((state: IRootState) => state?.user);
   const tokenState = useSelector((state: IRootState) => state?.token);
   const chainState = useSelector((state: IRootState) => state?.chain);
 
   const openModal = () => dispatch(txActions.openModal());
+
+  const showTxPage = () => navigate("/transfer-details");
 
   useEffect(() => {
     if (!provider) return;
@@ -37,6 +41,7 @@ const SmartUserDetails = () => {
         tokenSymbol={tokenState.symbol}
         tokenDecimals={tokenState.decimals}
         openModal={openModal}
+        showTxPage={showTxPage}
       />
       <SmartTxModal />
     </>

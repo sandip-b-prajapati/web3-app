@@ -14,6 +14,7 @@ type PropsType = {
   tokenSymbol: string;
   tokenDecimals: number;
   openModal: () => void;
+  showTxPage: () => void;
 };
 
 const UserDetails = ({
@@ -25,67 +26,73 @@ const UserDetails = ({
   tokenSymbol,
   tokenDecimals,
   openModal,
+  showTxPage,
 }: PropsType) => {
   return (
-    <Card>
-      <CardContent>
-        <Typography
-          gutterBottom
-          fontWeight="bold"
-          variant="body1"
-          component="div"
-        >
-          Address:
-        </Typography>
-        <Typography gutterBottom variant="body2" component="div">
-          {address}
-        </Typography>
-        <Typography
-          gutterBottom
-          fontWeight="bold"
-          variant="body1"
-          component="div"
-        >
-          Chain Info:
-        </Typography>
-        <Typography gutterBottom variant="body2" component="div">
-          Chain: {chainName}
-        </Typography>
-        <Typography gutterBottom variant="body2" component="div">
-          Native Balance: {nativeBalance}
-        </Typography>
-        <Typography
-          gutterBottom
-          fontWeight="bold"
-          variant="body1"
-          component="div"
-        >
-          Token Info:
-        </Typography>
-        <Typography gutterBottom variant="body2" component="div">
-          Token Name: {tokenName}
-        </Typography>
-        <Typography gutterBottom variant="body2" component="div">
-          Symbol: {tokenSymbol}
-        </Typography>
-        <Typography gutterBottom variant="body2" component="div">
-          Token Balance: {tokenBalance}
-        </Typography>
-        <Typography gutterBottom variant="body2" component="div">
-          Decimals: {tokenDecimals}
-        </Typography>
-        <Stack direction="row" spacing={2}>
-          {" "}
-          <Button
-            variant="contained"
-            onClick={openModal}
-            endIcon={<SendIcon />}
+    <div className="container">
+      <Card>
+        <CardContent>
+          <Typography
+            gutterBottom
+            fontWeight="bold"
+            variant="body1"
+            component="div"
           >
-            Send ERC20
-          </Button>{" "}
-        </Stack>
-      </CardContent>
-    </Card>
+            Address:
+          </Typography>
+          <Typography gutterBottom variant="body2" component="div">
+            {address}
+          </Typography>
+          <Typography
+            gutterBottom
+            fontWeight="bold"
+            variant="body1"
+            component="div"
+          >
+            Chain Info:
+          </Typography>
+          <Typography gutterBottom variant="body2" component="div">
+            Chain: {chainName}
+          </Typography>
+          <Typography gutterBottom variant="body2" component="div">
+            Native Balance: {nativeBalance}
+          </Typography>
+          <Typography
+            gutterBottom
+            fontWeight="bold"
+            variant="body1"
+            component="div"
+          >
+            Token Info:
+          </Typography>
+          <Typography gutterBottom variant="body2" component="div">
+            Token Name: {tokenName}
+          </Typography>
+          <Typography gutterBottom variant="body2" component="div">
+            Symbol: {tokenSymbol}
+          </Typography>
+          <Typography gutterBottom variant="body2" component="div">
+            Token Balance: {tokenBalance}
+          </Typography>
+          <Typography gutterBottom variant="body2" component="div">
+            Decimals: {tokenDecimals}
+          </Typography>
+          <Stack direction="row" spacing={2}>
+            {" "}
+            <Button
+              variant="contained"
+              onClick={openModal}
+              endIcon={<SendIcon />}
+            >
+              Send ERC20
+            </Button>{" "}
+            <Button variant="contained" onClick={showTxPage}>
+              Show ERC20 Transfer
+            </Button>{" "}
+          </Stack>
+        </CardContent>
+      </Card>
+    </div>
   );
 };
 

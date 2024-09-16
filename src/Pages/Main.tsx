@@ -6,6 +6,7 @@ import { walletConnectV2 } from "../connectors/walletConnectV2";
 import { useWeb3React } from "@web3-react/core";
 import { userActions } from "../store/slices/userSlice";
 import { useDispatch } from "react-redux";
+import TransferDetails from "../components/TransferDetails";
 
 const Main = () => {
   const { account } = useWeb3React();
@@ -26,6 +27,7 @@ const Main = () => {
       <Routes>
         <Route index element={<ConnectToWallet />} />
         <Route path="user-details" element={<UserDetails />} />
+        <Route path="transfer-details" element={<TransferDetails />} />
       </Routes>
     </Router>
   );

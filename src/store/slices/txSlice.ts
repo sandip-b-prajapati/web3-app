@@ -4,6 +4,7 @@ const txSlice = createSlice({
   name: "txSlice",
   initialState: {
     modalOpen: false,
+    trasferData: [],
   },
   reducers: {
     openModal: (state) => {
@@ -11,6 +12,9 @@ const txSlice = createSlice({
     },
     closeModal: (state) => {
       state.modalOpen = false;
+    },
+    addTransferData: (state, action) => {
+      state.trasferData = action.payload;
     },
   },
 });

@@ -16,9 +16,7 @@ function App() {
   return (
     <Provider store={store}>
       <Web3ReactProvider connectors={connectors}>
-        <div className="container">
-          <Main />
-        </div>
+        <Main />
       </Web3ReactProvider>
     </Provider>
   );
